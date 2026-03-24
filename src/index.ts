@@ -1,16 +1,9 @@
-import {
-  BYE_SENTINEL,
-  gamesForPlayer,
-  opponentIds,
-  score,
-  totalRounds,
-} from './utilities.js';
+import { BYE_SENTINEL, gamesForPlayer, opponentIds, score } from './utilities.js';
 
 import type { Game } from './types.js';
 
-function koya(playerId: string, games: Game[]): number {
-  const rounds = totalRounds(games);
-  const threshold = rounds / 2;
+function koya(playerId: string, games: Game[][]): number {
+  const threshold = games.length / 2;
   let sum = 0;
   for (const oppId of opponentIds(playerId, games)) {
     const oppScore = score(oppId, games);
