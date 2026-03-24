@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { koya } from '../index.js';
+import { koya } from '../functions.js';
 
 import type { Game } from '../types.js';
 
