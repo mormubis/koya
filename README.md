@@ -21,10 +21,11 @@ npm install @echecs/koya
 ```typescript
 import { koya } from '@echecs/koya';
 
+// games[n] = round n+1; Game has no `round` field
 const games = [
-  { blackId: 'B', result: 1, round: 1, whiteId: 'A' },
-  { blackId: 'C', result: 0.5, round: 2, whiteId: 'A' },
-  { blackId: 'A', result: 0, round: 3, whiteId: 'D' },
+  [{ blackId: 'B', result: 1, whiteId: 'A' }], // round 1
+  [{ blackId: 'C', result: 0.5, whiteId: 'A' }], // round 2
+  [{ blackId: 'A', result: 0, whiteId: 'D' }], // round 3
 ];
 
 const score = koya('A', games);
@@ -33,20 +34,18 @@ const score = koya('A', games);
 
 ## API
 
-### `koya(playerId, games)`
+### `koya(playerId, games, players?)`
 
 **FIDE section 9.2** — Koya score. Returns the total points scored by `playerId`
 only in games played against opponents who achieved at least 50% of the maximum
 possible score in the tournament. Designed for round-robin (all-play-all)
 tournaments. Byes are excluded from both the threshold calculation and the score
-sum.
+sum. Round is determined by array position: `games[0]` = round 1, `games[1]` =
+round 2, etc. The `Game` type has no `round` field.
 
 ```typescript
-koya(playerId: string, games: Game[]): number
+koya(playerId: string, games: Game[][], players?: Player[]): number
 ```
-
-Drop-in compatible with the shared `Tiebreak` type
-`(playerId: string, games: Game[], players: Player[]) => number`.
 
 ## Contributing
 
