@@ -15,12 +15,12 @@ function koya(playerId: string, games: Game[][]): number {
     if (oppScore >= threshold) {
       const gamesBetween = gamesForPlayer(playerId, games).filter(
         (g) =>
-          g.blackId !== BYE_SENTINEL &&
-          g.whiteId !== BYE_SENTINEL &&
-          (g.whiteId === oppId || g.blackId === oppId),
+          g.black !== BYE_SENTINEL &&
+          g.white !== BYE_SENTINEL &&
+          (g.white === oppId || g.black === oppId),
       );
       for (const g of gamesBetween) {
-        sum += g.whiteId === playerId ? g.result : 1 - g.result;
+        sum += g.white === playerId ? g.result : 1 - g.result;
       }
     }
   }

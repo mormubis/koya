@@ -81,7 +81,7 @@ pnpm lint && pnpm test && pnpm build
   score in the tournament.
 - The 50 % threshold is computed across all rounds of the tournament for each
   opponent individually.
-- A `Game` with `blackId: ''` (empty string) represents a **bye**. Byes do not
+- A `Game` with `black: ''` (empty string) represents a **bye**. Byes do not
   count toward an opponent's score for the threshold calculation, and the bye
   game itself is excluded from the Koya sum.
 - This system is defined specifically for round-robin (all-play-all) tournaments
