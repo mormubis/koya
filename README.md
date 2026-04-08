@@ -1,7 +1,6 @@
 # Koya
 
 [![npm](https://img.shields.io/npm/v/@echecs/koya)](https://www.npmjs.com/package/@echecs/koya)
-[![Test](https://github.com/mormubis/koya/actions/workflows/test.yml/badge.svg)](https://github.com/mormubis/koya/actions/workflows/test.yml)
 [![Coverage](https://codecov.io/gh/mormubis/koya/branch/main/graph/badge.svg)](https://codecov.io/gh/mormubis/koya)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
