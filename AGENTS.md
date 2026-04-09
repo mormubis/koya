@@ -4,6 +4,8 @@ Agent guidance for the `@echecs/koya` repository — a TypeScript library
 implementing the Koya tiebreak system for round-robin tournaments following FIDE
 Tiebreak Regulations (section 9.2).
 
+**See also:** [`REFERENCES.md`](REFERENCES.md) | [`SPEC.md`](SPEC.md)
+
 See the root `AGENTS.md` for workspace-wide conventions.
 
 **Backlog:** tracked in
@@ -96,6 +98,16 @@ pnpm lint && pnpm test && pnpm build
   but the implementation does not restrict its use to that format.
 - **No runtime dependencies** — keep it that way.
 - **ESM-only** — the package ships only ESM. Do not add a CJS build.
+
+---
+
+## Tiebreak Signature
+
+All tiebreak functions consumed by `@echecs/tournament` must conform to:
+
+```typescript
+(playerId: string, games: Game[], players: Map<string, Player>) => number;
+```
 
 ---
 
