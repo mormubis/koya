@@ -91,9 +91,11 @@ pnpm lint && pnpm test && pnpm build
   score in the tournament.
 - The 50 % threshold is computed across all rounds of the tournament for each
   opponent individually.
-- A `Game` with `black: ''` (empty string) represents a **bye**. Byes do not
-  count toward an opponent's score for the threshold calculation, and the bye
-  game itself is excluded from the Koya sum.
+- A bye is represented as a `Game` where both sides are the same player
+  (`black: player.id, white: player.id`). Bye points **do** count toward a
+  player's tournament score for the 50 % threshold calculation, but the bye game
+  itself is excluded from the Koya sum (the `g.black !== g.white` filter removes
+  it).
 - This system is defined specifically for round-robin (all-play-all) tournaments
   but the implementation does not restrict its use to that format.
 - **No runtime dependencies** — keep it that way.
