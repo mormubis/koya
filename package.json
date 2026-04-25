@@ -52,6 +52,7 @@
   ],
   "license": "MIT",
   "name": "@echecs/koya",
+  "packageManager": "pnpm@10.33.0",
   "publishConfig": {
     "access": "public"
   },
