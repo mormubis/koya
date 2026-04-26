@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.3] - 2026-04-26
+
+### Fixed
+
+- Corrected bye convention — byes use empty string for the absent side
+  (`{ black: '', white: 'A' }`) instead of same-player on both sides.
+
 ## [3.0.2] - 2026-04-17
 
 ### Fixed
