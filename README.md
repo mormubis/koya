@@ -3,6 +3,7 @@
 [![npm](https://img.shields.io/npm/v/@echecs/koya)](https://www.npmjs.com/package/@echecs/koya)
 [![Coverage](https://codecov.io/gh/echecsjs/koya/branch/main/graph/badge.svg)](https://codecov.io/gh/echecsjs/koya)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Spec](https://img.shields.io/badge/Spec-FIDE-green.svg)](SPEC.md)
 
 **Koya** is a TypeScript library implementing the Koya tiebreak system for
 round-robin chess tournaments, following the
