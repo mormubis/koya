@@ -43,7 +43,7 @@
     "README.md",
     "CHANGELOG.md"
   ],
-  "homepage": "https://github.com/echecsjs/koya#readme",
+  "homepage": "https://koya.echecs.dev",
   "keywords": [
     "chess",
     "fide",
