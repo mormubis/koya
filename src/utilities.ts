@@ -1,21 +1,28 @@
-import type { Game } from './types.js';
+import type { CompletedRound, Game } from '@echecs/tournament';
 
-function gamesForPlayer(player: string, games: Game[][]): Game[] {
-  return games.flat().filter((g) => g.white === player || g.black === player);
+function gamesForPlayer(player: string, rounds: CompletedRound[]): Game[] {
+  return rounds
+    .flatMap((r) => r.games)
+    .filter((g) => g.white === player || g.black === player);
 }
 
-function opponents(player: string, games: Game[][]): string[] {
-  return gamesForPlayer(player, games)
-    .filter((g) => g.black !== g.white)
-    .map((g) => (g.white === player ? g.black : g.white));
+function opponents(player: string, rounds: CompletedRound[]): string[] {
+  return gamesForPlayer(player, rounds).map((g) =>
+    g.white === player ? g.black : g.white,
+  );
 }
 
-function score(player: string, games: Game[][]): number {
-  let sum = 0;
-  for (const g of gamesForPlayer(player, games)) {
-    sum += g.white === player ? g.result : 1 - g.result;
+function scoreFor(player: string, game: Game): number {
+  if (game.result === 'draw') {
+    return 0.5;
   }
-  return sum;
+  if (game.result === 'none') {
+    return 0;
+  }
+  return (game.result === 'white' && game.white === player) ||
+    (game.result === 'black' && game.black === player)
+    ? 1
+    : 0;
 }
 
-export { gamesForPlayer, opponents, score };
+export { gamesForPlayer, opponents, scoreFor };

@@ -1,19 +1,24 @@
-import { gamesForPlayer, opponents, score } from './utilities.js';
+import { gamesForPlayer, opponents, scoreFor } from './utilities.js';
 
-import type { Game } from './types.js';
+import type { CompletedRound, Player } from '@echecs/tournament';
 
-function koya(player: string, games: Game[][]): number {
-  const threshold = games.length / 2;
+function koya(
+  player: string,
+  rounds: CompletedRound[],
+  players: Player[],
+): number {
+  const threshold = rounds.length / 2;
   let sum = 0;
-  for (const opp of opponents(player, games)) {
-    const oppScore = score(opp, games);
-    if (oppScore >= threshold) {
-      const gamesBetween = gamesForPlayer(player, games).filter(
-        (g) => g.black !== g.white && (g.white === opp || g.black === opp),
-      );
-      for (const g of gamesBetween) {
-        sum += g.white === player ? g.result : 1 - g.result;
-      }
+  for (const opp of opponents(player, rounds)) {
+    const opponent = players.find((p) => p.id === opp);
+    if (opponent === undefined || opponent.points < threshold) {
+      continue;
+    }
+    const gamesBetween = gamesForPlayer(player, rounds).filter(
+      (g) => g.white === opp || g.black === opp,
+    );
+    for (const g of gamesBetween) {
+      sum += scoreFor(player, g);
     }
   }
   return sum;
@@ -21,4 +26,10 @@ function koya(player: string, games: Game[][]): number {
 
 export { koya, koya as tiebreak };
 
-export type { Game, GameKind, Player, Result } from './types.js';
+export type {
+  Bye,
+  CompletedRound,
+  Game,
+  Pairing,
+  Player,
+} from '@echecs/tournament';
